@@ -20,11 +20,11 @@ def get_import_graph(root:Path, exclude:set[Path])->dict[Path, list[Path]]:
     relative = {}
     absolute = root.resolve()
     for er, ees in raw.items():
-        er_path = Path(er.resolve()).relative_to(absolute)
+        er_path = Path(er).resolve().relative_to(absolute)
         if any(er_path.is_relative_to(exclude_path) for exclude_path in exclude):
             continue
 
-        relative[er_path] = [Path(ee.resolve()).relative_to(absolute) for ee in ees]
+        relative[er_path] = [Path(ee).resolve().relative_to(absolute) for ee in ees]
     return relative
 
 def build_dir_graphviz(import_graph:dict[Path, list[Path]])->graphviz.Digraph:
