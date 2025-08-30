@@ -1,3 +1,11 @@
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+#     "graphviz",
+#     "ruff",
+#     "typer",
+# ]
+# ///
 import subprocess
 import json
 
